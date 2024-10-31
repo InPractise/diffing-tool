@@ -1,4 +1,6 @@
-# SEC Filing Diff Tool
+# SEC Filing Diff Tool (Experimental)
+
+> ⚠️ **Experimental Status**: This tool represents significant research and experimentation in parsing SEC filings. SEC documents are notably complex and inconsistent, and this implementation reflects months of testing against various filing formats and edge cases.
 
 A sophisticated tool for parsing and comparing SEC filings (10-K, 10-Q, etc.) to identify and visualize changes between documents. This tool helps analysts, investors, and researchers efficiently track changes in company disclosures over time.
 
@@ -89,6 +91,50 @@ The comparison algorithm is optimized for both accuracy and speed:
 - Batch processing capabilities
 - Export functionality for different formats
 
+## Limitations
+
+While the tool handles many common cases well, users should be aware of certain limitations:
+
+- Some highly unusual filing formats may not parse correctly
+- Very old filings (pre-2005) may have inconsistent results
+- Extremely large tables might have matching issues
+- Some company-specific formatting may require special handling
+- The tool works best with 10-K and 10-Q filings; other forms may have reduced accuracy
+
+## Development Challenges
+
+Building this tool required overcoming several significant challenges:
+
+### SEC Filing Complexity
+- SEC filings lack consistent structure across companies and years
+- Documents mix HTML, plain text, and proprietary EDGAR tags
+- Table formats vary dramatically between companies
+- Section titles and hierarchies aren't standardized
+- Companies frequently reorganize their filing structures
+
+### Edge Cases
+Through extensive testing across hundreds of filings, we encountered and addressed:
+- Inconsistent HTML formatting
+- Missing or malformed tables of contents
+- Varying approaches to section numbering
+- Mixed usage of tables vs. text for similar content
+- Incomplete or incorrect EDGAR tags
+- Historical filing format changes
+- Company-specific formatting quirks
+
+### Parsing Reliability
+The current implementation represents many iterations of refinement:
+- Multiple parsing strategies were tested and combined
+- Section matching algorithms were tuned through trial and error
+- Text normalization rules evolved based on real-world examples
+- Table handling required special consideration for different formats
+- Page number tracking needed to account for various document structures
+
 ## Contributing
 
-Contributions are welcome! Please read our contributing guidelines and submit pull requests for any enhancements.
+Given the experimental nature of this tool, we especially welcome:
+- Reports of parsing failures with specific examples
+- Additional test cases from different companies/years
+- Improvements to section matching algorithms
+- Enhanced table parsing strategies
+- Documentation of company-specific edge cases
